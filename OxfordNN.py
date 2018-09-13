@@ -36,8 +36,8 @@ def get_data(pics_folder_path, num_classes):
         Y.append(y_)
 
         #delete this!!
-        if i == 99:
-            break
+        # if i == 9:
+        #     break
     
     X = np.stack(X, axis=0)
     Y = np.stack(Y, axis=0)
@@ -83,21 +83,32 @@ model=base_model()
 
 
 # model.predict(X_train[0])
-im = X_train[:10]
+# im = X_train
 # im = im.transpose((2,0,1))
 # im = np.expand_dims(im, axis=0)
-# y_ = Y_train[:10]
+# y_ = Y_train
 # print(y_.shape)
 # im.shape, y_.shape
-y_ = model.predict(im)
-print(im.shape, y_.shape)
-model.fit(im, y_, epochs=1, batch_size=5)
-print("end")
+# y_ = model.predict(im)
+# print(im.shape, y_.shape)
+# model.fit(im, y_, epochs=1)
+# from tensorflow.python.client import device_lib
+# print(device_lib.list_local_devices())
+
+
+
+# model = train_model(model, X_train, Y_train)
+# y_test = model.predict(X_test)
+# print(np.count_nonzero(y_test==Y_test)/X_test.shape[0])
+#
+# save_weights(model)
+# print("end")
 
 
 # In[ ]:
 
-
-# model = train_model(model, X_train, Y_train)
+model = train_model(model, X_train, Y_train)
+print('finish')
+save_weights(model)
 # y = model.predict(X_test)
-# print(np.count(y==Y_test)/Y_test.shape[0])
+# print(np.count_nonzero(y==Y_test)/Y_test.shape[0])
